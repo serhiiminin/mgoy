@@ -7,7 +7,7 @@ const sortDataAmountByAsc = data =>
 const checkIsNonZeroPresent = data =>
   Boolean(data.find(({ amount }) => amount !== 0))
 
-const getPayments = data => {
+const calculatePayments = data => {
   const total = getTotalAmount(data)
   const count = data.length
   const average = getAverage(total, count)
@@ -54,5 +54,5 @@ export {
   getDifferences,
   sortDataAmountByAsc,
   checkIsNonZeroPresent,
-  getPayments,
+  calculatePayments,
 }
