@@ -1,5 +1,5 @@
 module.exports = {
-  pathPrefix: "/money-guys-owe-you",
+  pathPrefix: "/mgoy",
   siteMetadata: {
     title: `Money guys owe you`,
     description: `A simple service for calculation money each member in company owe each other.`,
@@ -25,7 +25,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/calculator-icon.png`, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

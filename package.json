@@ -1,5 +1,5 @@
 {
-  "name": "money-guys-owe-you",
+  "name": "mgoy",
   "private": true,
   "description": "A simple service for calculation money each member in company owe each other",
   "version": "0.1.0",
@@ -39,9 +39,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/serhiiminin/money-guys-owe-you"
+    "url": "https://github.com/serhiiminin/mgoy"
   },
   "bugs": {
-    "url": "https://github.com/serhiiminin/money-guys-owe-you/issues"
+    "url": "https://github.com/serhiiminin/mgoy/issues"
   }
 }
