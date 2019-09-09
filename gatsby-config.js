@@ -1,4 +1,5 @@
 module.exports = {
+  pathPrefix: "/mgoy",
   siteMetadata: {
     title: `Money guys owe you`,
     description: `A simple service for calculation money each member in company owe each other.`,
