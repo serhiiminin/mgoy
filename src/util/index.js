@@ -1,10 +1,10 @@
 const getTotalAmount = data => data.reduce((acc, { amount }) => acc + amount, 0)
 const getAverage = (totalAmount, count) => count > 0 ? totalAmount / count : 0
-const getDifferences = (data, average) =>
+const calculateDiffs = (data, average) =>
   data.map(item => ({ ...item, diff: item.amount - average }))
-const sortDataDiffByAsc = data =>
+const sortDataByDiffAsc = data =>
   data.sort(({ diff: a }, { diff: b }) => a - b)
-const checkIsNonZeroPresent = data =>
+const checkIsNonZeroDiffPresent = data =>
   Boolean(data.find(({ diff }) => diff !== 0))
 
 const calculatePayments = data => {
@@ -12,8 +12,9 @@ const calculatePayments = data => {
   const count = data.length
   const average = getAverage(total, count)
 
-  let diffs = [...sortDataDiffByAsc(getDifferences(data, average))]
-  let isNonZeroPresent = checkIsNonZeroPresent(diffs)
+  let diffs = [...sortDataByDiffAsc(calculateDiffs(data, average))]
+  let isNonZeroPresent = checkIsNonZeroDiffPresent(diffs)
+
   while (isNonZeroPresent) {
     let updatedDiffs = [...diffs]
     const mustPay = { ...updatedDiffs[0] }
@@ -40,8 +41,8 @@ const calculatePayments = data => {
 
     updatedDiffs = [mustPay, ...updatedDiffs.slice(1, count - 1), mustGet]
 
-    diffs = sortDataDiffByAsc(updatedDiffs)
-    isNonZeroPresent = checkIsNonZeroPresent(diffs)
+    diffs = sortDataByDiffAsc(updatedDiffs)
+    isNonZeroPresent = checkIsNonZeroDiffPresent(diffs)
   }
 
   return diffs
@@ -50,8 +51,8 @@ const calculatePayments = data => {
 export {
   getTotalAmount,
   getAverage,
-  getDifferences,
-  sortDataDiffByAsc,
-  checkIsNonZeroPresent,
+  calculateDiffs,
+  sortDataByDiffAsc,
+  checkIsNonZeroDiffPresent,
   calculatePayments,
 }
