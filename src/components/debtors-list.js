@@ -12,8 +12,7 @@ const DebtorsList = () => {
   const totalAmount = getTotalAmount(debtors)
   const average = getAverage(totalAmount, peopleCount)
 
-  const onSubmit = event => {
-    event.preventDefault()
+  const onSubmit = () => {
     setName(NAME_INITIAL_VALUE)
     setAmount(AMOUNT_INITIAL_VALUE)
     setDebtors(data => [...data, { name, amount }])
@@ -24,7 +23,7 @@ const DebtorsList = () => {
   }
 
   return (
-    <div>
+    <>
       <input
         type="text"
         value={name}
@@ -62,7 +61,7 @@ const DebtorsList = () => {
         ))}
       </ul>
       <button onClick={handleCalculate} disabled={peopleCount < 2}>Calculate</button>
-    </div>
+    </>
 
   )
 }

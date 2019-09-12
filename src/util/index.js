@@ -1,7 +1,10 @@
+const roundAmount = num => Math.round(num*100)/100;
 const getTotalAmount = data => data.reduce((acc, { amount }) => acc + amount, 0)
-const getAverage = (totalAmount, count) => count > 0 ? totalAmount / count : 0
+const getAverage = (totalAmount, count) => count > 0
+  ? Math.round(100* totalAmount / count)/100
+  : 0
 const calculateDiffs = (data, average) =>
-  data.map(item => ({ ...item, diff: item.amount - average }))
+  data.map(item => ({ ...item, diff: roundAmount(item.amount - average) }))
 const sortDataByDiffAsc = data =>
   data.sort(({ diff: a }, { diff: b }) => a - b)
 const checkIsNonZeroDiffPresent = data =>
@@ -11,7 +14,6 @@ const calculatePayments = data => {
   const total = getTotalAmount(data)
   const count = data.length
   const average = getAverage(total, count)
-
   let diffs = [...sortDataByDiffAsc(calculateDiffs(data, average))]
   let isNonZeroPresent = checkIsNonZeroDiffPresent(diffs)
 
